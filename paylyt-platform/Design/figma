@@ -1,1 +1,76 @@
 this is the design foldder
+# PayLyt Project Flow
+
+This document explains the end-to-end flow of the PayLyt platform for all team members.
+
+---
+
+## Overview
+
+PayLyt is a Bitcoin Lightning payment platform for freelance jobs. It ensures secure, escrow-based payments between clients and freelancers, with instant release and optional BTC-to-fiat conversion.
+
+---
+
+## High-Level Flow
+
+1. **Client Posts Job**
+   - Client creates a job (title, description, amount in local currency & BTC, deadline, milestones).
+
+2. **Freelancer Accepts Job**
+   - Freelancer views job, accepts terms, and is assigned to the job.
+
+3. **Client Pays**
+   - Platform generates a Lightning invoice (via Bitnob API).
+   - Client pays using QR code or payment link.
+
+4. **Funds Held by PayLyt**
+   - Upon payment confirmation (Bitnob webhook), funds are marked as “held” (paid_locked) in the system.
+   - Freelancer is notified that payment is secured.
+
+5. **Freelancer Completes Work**
+   - Freelancer submits deliverables through the platform.
+
+6. **Client Approves Work**
+   - Client reviews deliverables and clicks “Approve Release.”
+
+7. **PayLyt Releases Payment**
+   - Platform initiates payout via Bitnob API.
+   - Funds are released instantly to the freelancer’s wallet.
+
+8. **Freelancer Converts or Withdraws**
+   - Freelancer can convert BTC to local currency (via Bitnob) and withdraw to bank/mobile money, or keep/invest BTC.
+
+9. **Audit & Notifications**
+   - Both parties receive receipts.
+   - All actions are logged for transparency and dispute resolution.
+
+---
+
+## Visual Flow
+
+```
+Client → [Pay] → PayLyt (holds funds) → Freelancer [completes job] → Client [approves] → PayLyt [releases payment] → Freelancer [converts/withdraws]
+```
+
+---
+
+## Key Rules
+
+- **Escrow:** Funds are only released after client approval.
+- **Security:** All payments and releases are logged and verified.
+- **Transparency:** Conversion rates and fees are shown before any transaction.
+- **Compliance:** KYC and audit logs are maintained.
+
+---
+
+## For Developers
+
+- **Backend:** Handles job logic, payment flows, Bitnob integration, webhooks, and audit logs.
+- **Frontend:** Provides UI for job posting, payment, approval, and dashboards.
+- **AI/ML:** (Optional) Can be used for fraud detection, job matching, or analytics.
+- **Cloud:** Deploys and manages infrastructure, ensures scalability and security.
+- **UI/UX:** Designs user flows and ensures a seamless experience.
+
+---
+
+**Refer to this document for a clear understanding of
