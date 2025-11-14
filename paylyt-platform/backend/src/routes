@@ -1,0 +1,29 @@
+// paylyt-platform/backend/src/routes/index.js
+
+const express = require('express');
+const router = express.Router();
+const jobController = require('../controllers/jobController');
+const userController = require('../controllers/userController');
+const paymentController = require('../controllers/paymentController');
+
+// Job routes
+router.post('/jobs', jobController.createJob);
+router.get('/jobs/:id', jobController.getJob);
+router.post('/jobs/:id/invoice', paymentController.createInvoice);
+router.post('/jobs/:id/complete', jobController.completeJob);
+router.post('/jobs/:id/approve', jobController.approveJob);
+router.post('/jobs/:id/release', paymentController.releasePayment);
+router.get('/jobs/:id/status', jobController.getJobStatus);
+
+// User routes
+router.post('/auth/register', userController.register);
+router.post('/auth/login', userController.login);
+
+// Payment routes
+router.post('/wallet/convert', paymentController.convertCurrency);
+router.post('/wallet/withdraw', paymentController.withdrawFunds);
+
+// Webhook route for Bitnob
+router.post('/webhooks/bitnob', paymentController.handleWebhook);
+
+module.exports = router;
