@@ -1,10 +1,10 @@
-// Freelancer applies to a job
-router.post('/:id/apply', auth, jobController.applyToJob);
 const express = require('express');
 const router = express.Router();
 const jobController = require('../controllers/jobController');
 const auth = require('../middlewares/auth');
 
+// Freelancer applies to a job
+router.post('/:id/apply', auth, jobController.applyToJob);
 
 // Freelancer views all jobs
 router.get('/', auth, jobController.getAllJobs);

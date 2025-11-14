@@ -1,0 +1,36 @@
+/* paylyt-platform/frontend/src/pages/LoginPage.css */
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #1e1e1e;
+}
+
+.login-form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #333;
+  background-color: #252525;
+  color: #ffffff;
+}
+
+.login-form button {
+  padding: 10px;
+  border-radius: 3px;
+  border: none;
+  background-color: #00bfa5; /* Green accent */
+  color: #ffffff;
+  cursor: pointer;
+}
