@@ -1,0 +1,28 @@
+# Node
+node_modules/
+.env
+paylyt.sqlite
+*.log
+.DS_Store
+
+# VSCode
+.vscode/
+
+# OS
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# SQLite
+*.sqlite
+*.sqlite3
+
+# Misc
+.env.*
+.idea/
+*.swp

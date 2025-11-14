@@ -1,6 +1,9 @@
 # Project Flow for PayLyt Platform
 
-## Overview
+cd backend
+npm init -y
+npm install express dotenv cors jest supertest
+npm install --save-dev nodemon## Overview
 The PayLyt platform facilitates secure Bitcoin Lightning payments between clients and freelancers. The following outlines the user journey and core functionalities of the platform.
 
 ## User Journey
