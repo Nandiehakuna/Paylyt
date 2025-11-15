@@ -1,15 +1,25 @@
 const User = require('../models/User');
+const Profile = require('../models/Profile'); // Import the new Profile model
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 exports.register = async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, email, password, role, skills, hourlyRate } = req.body;
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) return res.status(400).json({ error: 'Email already registered' });
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ name, email, password: hashedPassword, role });
+
+    // If the user is a freelancer, create their profile
+    if (role === 'freelancer') {
+      await Profile.create({
+        user_id: user.id,
+        skills: skills || [], // Handle case where skills might be empty
+        hourly_rate: hourlyRate || null
+      });
+    }
 
     const token = jwt.sign(
       { id: user.id, email: user.email, role: user.role },

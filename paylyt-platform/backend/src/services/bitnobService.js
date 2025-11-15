@@ -1,6 +1,6 @@
 
 const axios = require('axios');
-const BITNOB_API_URL = 'https://api.bitnob.co/api/v1';
+const BITNOB_API_URL = 'https://api.sandbox.bitnob.co/v1';
 const BITNOB_API_KEY = process.env.BITNOB_API_KEY;
 
 function getHeaders() {
