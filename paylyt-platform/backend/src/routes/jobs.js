@@ -6,8 +6,14 @@ const auth = require('../middlewares/auth');
 // Freelancer applies to a job
 router.post('/:id/apply', auth, jobController.applyToJob);
 
+// Get applications for a job
+router.get('/:id/applications', auth, jobController.getApplicationsForJob);
+
 // Freelancer views all jobs
 router.get('/', auth, jobController.getAllJobs);
+
+// Get job details
+router.get('/:id', auth, jobController.getJobById);
 
 // Client posts a job
 router.post('/', auth, jobController.createJob);

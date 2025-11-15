@@ -54,16 +54,19 @@ exports.createJob = async (req, res) => {
   }
 };
 
-// Freelancer accepts a job
+// Client accepts an application
 exports.acceptJob = async (req, res) => {
   try {
     const job = await Job.findById(req.params.id);
     if (!job) return res.status(404).json({ error: 'Job not found' });
     if (job.status !== 'open') return res.status(400).json({ error: 'Job is not open' });
-    job.freelancer_id = req.user.id;
+    const { applicationId } = req.body;
+    const application = await Application.findById(applicationId);
+    if (!application || application.job_id !== job._id) return res.status(400).json({ error: 'Invalid application' });
+    job.freelancer_id = application.freelancer_id;
     job.status = 'in_progress';
     await job.save();
-    res.json({ message: 'Job accepted', job });
+    res.json({ message: 'Application accepted', job });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -155,6 +158,27 @@ exports.releasePayment = async (req, res) => {
     // await payoutService.releasePayment({ amount_btc: job.amount_btc, freelancer_wallet_id: freelancer.bitnob_wallet_id });
 
     res.json({ message: 'Payment released to freelancer (escrow complete)' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// Get job by id
+exports.getJobById = async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id);
+    if (!job) return res.status(404).json({ error: 'Job not found' });
+    res.json(job);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// Get applications for a job
+exports.getApplicationsForJob = async (req, res) => {
+  try {
+    const applications = await Application.findAll({ where: { job_id: req.params.id } });
+    res.json(applications);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

@@ -5,8 +5,10 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowJs": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "include": ["src/**/*.js"],
+  "exclude": ["node_modules", "**/*.spec.js"]
 }
