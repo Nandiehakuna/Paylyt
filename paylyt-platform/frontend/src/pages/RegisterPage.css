@@ -1,0 +1,115 @@
+/* General Styles */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000;
+    color: #fff;
+}
+
+.register-box {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 10px;
+    width: 400px;
+}
+
+/* Header */
+.register-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.back-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.lightning-icon {
+    font-size: 24px;
+    color: #0f0;
+}
+
+/* User Type Selection */
+.user-type-selection {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.user-type {
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 48%;
+}
+
+.user-type.active {
+    border-color: #0f0;
+}
+
+.user-icon {
+    font-size: 24px;
+}
+
+/* Form Styles */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* Freelancer Profile Section */
+.freelancer-profile {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.freelancer-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Button and Links */
+.btn-create-account {
+    width: 100%;
+    padding: 15px;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.signin-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signin-link a {
+    color: #0f0;
+    text-decoration: none;
+}
